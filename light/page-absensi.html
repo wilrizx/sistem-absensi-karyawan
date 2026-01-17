@@ -534,7 +534,7 @@
 
         <div class="container-fluid mt-4">
 
-            <!-- SUMMARY CARD -->
+            <!-- summary card -->
             <div class="row g-3 mb-4">
                 <div class="col-md-3">
                     <div class="card shadow-sm border-0 bg-success text-white">
@@ -561,6 +561,7 @@
                         <div class="card-body text-center">
                             <h5>Sakit</h5>
                             <h2>1</h2>
+                            <small>Surat Dokter</small>
                         </div>
                     </div>
                 </div>
@@ -577,8 +578,42 @@
             </div>
 
             <!-- TABLE -->
-            <div class="card shadow-sm">
                 <div class="card-body">
+                    <div class="row mb-3 g-2">
+
+                        <div class="col-md-3">
+                            <label class="form-label">Filter Status</label>
+                            <select id="filterStatus" class="form-select">
+                                <option value="">Semua</option>
+                                <option value="Hadir">Hadir</option>
+                                <option value="Izin">Izin</option>
+                                <option value="Sakit">Sakit</option>
+                                <option value="Tidak Hadir">Tidak Hadir</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Filter Divisi</label>
+                            <select id="filterDivisi" class="form-select">
+                                <option value="">Semua</option>
+                                <option value="Divisi 1">Divisi 1</option>
+                                <option value="Divisi 2">Divisi 2</option>
+                                <option value="Divisi 4">Divisi 4</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Cari Nama / NIP</label>
+                            <input type="text" id="searchBox" class="form-control" placeholder="Ketik nama atau NIP...">
+                        </div>
+
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button id="resetFilter" class="btn btn-secondary w-100">Reset</button>
+                        </div>
+
+                    </div>
+
+
                     <table id="absensiTable" class="table table-striped table-bordered align-middle">
                         <thead class="table-light">
                             <tr>
@@ -644,18 +679,43 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
 
         </div>
 
         <script>
         $(document).ready(function () {
-            $('#absensiTable').DataTable({
+
+            var table = $('#absensiTable').DataTable({
                 pageLength: 5,
                 lengthChange: false
             });
+
+            // Filter Status (kolom ke-5 index dimulai dari 0)
+            $('#filterStatus').on('change', function () {
+                table.column(5).search(this.value).draw();
+            });
+
+            // Filter Divisi (kolom ke-2)
+            $('#filterDivisi').on('change', function () {
+                table.column(2).search(this.value).draw();
+            });
+
+            // Search custom (Nama + NIP)
+            $('#searchBox').on('keyup', function () {
+                table.search(this.value).draw();
+            });
+
+            // Reset Filter
+            $('#resetFilter').on('click', function () {
+                $('#filterStatus').val('');
+                $('#filterDivisi').val('');
+                $('#searchBox').val('');
+                table.search('').columns().search('').draw();
+            });
+
         });
         </script>
+
 
         <!-- Start page footer -->
         <div class="section-body">
