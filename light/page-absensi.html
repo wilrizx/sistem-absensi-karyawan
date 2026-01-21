@@ -244,7 +244,7 @@
     <!-- start Main menu -->
     <div id="left-sidebar" class="sidebar">
         <div class="d-flex justify-content-between brand_name">
-            <h5 class="brand-name">Crush it</h5>
+            <h5 class="brand-name">EMPLOYEE INFORMATION</h5>
             <div class="theme_btn">
                 <a class="theme1" data-toggle="tooltip" title="Theme Radical" href="#" onclick="setStyleSheet('../assets/css/theme1.css', 0);"></a>
                 <a class="theme2" data-toggle="tooltip" title="Theme Turmeric" href="#" onclick="setStyleSheet('../assets/css/theme2.css', 0);"></a>
@@ -267,15 +267,15 @@
             <div class="tab-pane fade active show" id="all-tab">
                 <nav class="sidebar-nav">
                     <ul class="metismenu ci-effect-1">
-                        <li class="g_heading">Menu</li>
+                        <li class="g_heading">EMPLOYEE INFORMATION</li>
                         <li><a href="table-datatable.html"><i class="fa-solid fa-users"></i><span
                                         data-hover="Profil Karyawan">Profil Karyawan</span></a></li>
                         <li><a href="page-absensi.html"><i class="icon-speech"></i><span
                                         data-hover="Absensi Karyawan">Absensi Karyawan</span></a></li>
-                        <li><a href="#"><i class="icon-notebook"></i><span
+                        <!-- <li><a href="#"><i class="icon-notebook"></i><span
                                         data-hover="Shift Karyawan">Shift Karyawan</span></a></li>
                         <li><a href="#"><i class="fa-solid fa-hand-holding-dollar"></i><span
-                                        data-hover="Gaji">Perhitungan Gaji</span></a></li>
+                                        data-hover="Gaji">Perhitungan Gaji</span></a></li> -->
                         <!-- <li>
                             <a href="javascript:void(0)" class="has-arrow arrow-b"><i class="icon-home"></i><span data-hover="Dashboard">Dashboard</span></a>
                             <ul>
@@ -332,7 +332,7 @@
                             </ul>
                         </li>                
                         <li><a href="widgets.html"><i class="icon-puzzle"></i><span data-hover="Widgets">Widgets</span></a></li> -->
-                        <li class="g_heading">Extra Pages</li>
+                        <!-- <li class="g_heading">Extra Pages</li>
                         <li>
                             <a href="javascript:void(0)" class="has-arrow arrow-b"><i class="icon-lock"></i><span data-hover="Authentication">Authentication</span></a>
                             <ul>
@@ -342,7 +342,7 @@
                                 <li><a href="404.html"><span data-hover="404">404 error</span></a></li>
                                 <li><a href="500.html"><span data-hover="500">500 error</span></a></li>   
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li>
                             <a href="javascript:void(0)" class="has-arrow arrow-b"><i class="fe fe-file"></i><span data-hover="Pages">Pages</span></a>
                             <ul>
@@ -616,8 +616,6 @@
                                 Reset
                             </button>
                         </div>
-
-
                     </div>
 
 
@@ -697,22 +695,18 @@
                 lengthChange: false
             });
 
-            // Filter Status (kolom ke-5 index dimulai dari 0)
             $('#filterStatus').on('change', function () {
                 table.column(5).search(this.value).draw();
             });
 
-            // Filter Divisi (kolom ke-2)
             $('#filterDivisi').on('change', function () {
                 table.column(2).search(this.value).draw();
             });
 
-            // Search custom (Nama + NIP)
             $('#searchBox').on('keyup', function () {
                 table.search(this.value).draw();
             });
 
-            // Reset Filter
             $('#resetFilter').on('click', function () {
                 $('#filterStatus').val('');
                 $('#filterDivisi').val('');
